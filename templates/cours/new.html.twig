@@ -1,0 +1,15 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}New Cours{% endblock %}
+
+{% block form %}
+<div style="text-align: center;">
+    <h3 class="m-0 font-weight-bold text-primary">Create new Cours</h3>
+</div>
+
+    {{ include('cours/_form.html.twig') }}
+    <div style="text-align: center;">
+
+    <a class="btn btn-secondary" href="{{ path('cours_index') }}">back to list</a>
+    </div>
+{% endblock %}

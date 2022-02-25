@@ -1,0 +1,64 @@
+{% block head_css %}
+    <!-- Copy CSS from https://getbootstrap.com/docs/4.4/getting-started/introduction/#css -->
+{% endblock %}
+{% block head_js %}
+    <!-- Copy JavaScript from https://getbootstrap.com/docs/4.4/getting-started/introduction/#js -->
+{% endblock %}
+
+
+    {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+<div class="form-inline">
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.nomEvennement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'NomEvennement'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.nomEvennement) }}
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.nbplaces,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'nbplaces'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.nbplaces) }}
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.description,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Description'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.description) }}
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_label(form.date,"Date") }}
+        {{ form_widget(form.date) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.date) }}
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.nomSalle,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.nomSalle) }}
+        </div>
+    </div>
+
+</div>
+
+<div style="text-align: center;">
+    <br>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+<br>
+{{ form_end(form) }}
+
+
+
+
+
+
+
+
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}

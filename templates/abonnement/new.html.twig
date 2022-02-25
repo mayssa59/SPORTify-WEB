@@ -1,0 +1,16 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}New Abonnement{% endblock %}
+
+{% block form %}
+
+<div style="text-align: center;">
+    <h3 class="m-0 font-weight-bold text-primary">Create new Abonnement</h3>
+</div>
+
+{{ include('abonnement/_form.html.twig') }}
+   <div style="text-align: center;">
+       <a class="btn btn-secondary" href="{{ path('abonnement_index') }}">back to list</a>
+   </div>
+
+{% endblock %}

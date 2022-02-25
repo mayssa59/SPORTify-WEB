@@ -1,0 +1,15 @@
+{% extends 'template.html.twig' %}
+
+
+{% block form %}
+    <div style="text-align: center;">
+        <h3>Create new Zone</h3>
+    </div>
+
+    {{ include('zone/_formCours.html.twig') }}
+    <div style="text-align: center;">
+
+        <a class="btn btn-primary" href="{{ path('zone') }}">back to list</a>
+    </div>
+
+{% endblock %}

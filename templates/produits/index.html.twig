@@ -1,0 +1,164 @@
+{% extends 'template.html.twig' %}
+{% block form %}
+
+<!DOCTYPE html>
+
+<title>Produits</title>
+
+{% block body %}
+
+<div class="container-fluid">
+    <h3 class="m-0 font-weight-bold text-primary">Products</h3>
+
+    <div class="card shadow-lg h-75 m-4 mt-8">
+        <div class="card-body">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Statistiques des produits</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="myChart" width="301" height="245"
+                                style="display: block; width: 301px; height: 245px;"
+                                class="chartjs-render-monitor"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> vetements
+                                        </span>
+                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> nutritions
+                                        </span>
+                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> equipements
+                                        </span>
+                        <span class="mr-2">
+                                            <i class="fas fa-circle text-warning"></i> autres
+                                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-75 m-4 mt-8">
+
+        <div class="card-body">
+            <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+            <div class="card-body">
+                <form  method="get" type="submit" id="produits_index"
+                       class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input name="users" id="users" class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <a class="btn btn-primary"  type="submit" >
+                                <i class="fas fa-search fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <br>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Quantites</th>
+                <th>Prix</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.libelle }}</td>
+                <td>{{ produit.quantites }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.type }}</td>
+                <td>
+                    <a class="btn btn-danger btn-icon-split"  href="{{ path('produits_show', {'id': produit.id}) }}">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-eye"></i>
+                            </span></a>
+                    <a class="btn btn-info btn-icon-split" href="{{ path('produits_edit', {'id': produit.id}) }}">
+                    <span class="icon text-white-50">
+                            <i class="fas fa-fw fa-wrench"></i>
+                            </span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('produits_new') }}">Create new</a>
+
+
+    <script src={{ asset("back/vendor/chart.js/Chart.min.js") }}></script>
+    <script>
+        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#858796';
+
+        // Pie Chart Example
+        var ctx = document.getElementById("myChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["vetements", "nutritions", "equipements", "autres"],
+                datasets: [{
+                    data: [{{ cv }}, {{ cn }}, {{ ce }},{{ cs }}],
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc','#cca736'],
+                    hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf','#cca736'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
+                },
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 80,
+            },
+        });
+    </script>
+{% endblock %}
+
+    {% endblock %}

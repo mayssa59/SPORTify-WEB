@@ -1,0 +1,84 @@
+{% extends 'template.html.twig' %}
+
+
+{% block form %}
+
+
+<div class="container-fluid">
+    <h3 class="m-0 font-weight-bold text-primary">Courses</h3>
+
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-75 m-4 mt-8">
+
+        <div class="card-body">
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+            <div class="card-body">
+                <form  method="get" type="submit" id="cours_index"
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input name="users" id="users" class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <a class="btn btn-primary"  type="submit" >
+                                <i class="fas fa-search fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <br>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+            <tr>
+                <th>IdCours</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Duree</th>
+                <th>Type</th>
+                <th>PlaceDisponible</th>
+                <th>MailCoach</th>
+                <th>Nom de Salle de Sport</th>
+                <th>QrCode</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cour in cours %}
+            <tr>
+                <td>{{ cour.idCours }}</td>
+                <td>{{ cour.date ? cour.date|date('Y-m-d') : '' }}</td>
+                <td>{{ cour.heure }}</td>
+                <td>{{ cour.duree }}</td>
+                <td>{{ cour.typeCours }}</td>
+                <td>{{ cour.placeDisponible }}</td>
+                <td>{{ cour.mailcoach }}</td>
+                <td>{{ cour.nomsalledesport }}</td>
+                {%  set qrcode = "ID :" ~ cour.idCours ~"\n"~ "Type :"~cour.typeCours ~"\n"~"Mail Coach :" ~ cour.mailcoach~"\n"~"Nom Salle :" ~ cour.nomsalledesport~"\n"~"Place Disponible:" ~ cour.placeDisponible|trans~"\n"~"Heure(H):" ~ cour.heure|trans ~"\n"~"Duree(MIN):" ~ cour.duree|trans~"\n"~"Date:" ~ cour.date|date('Y-m-d') %}
+                <td><img src="{{ qr_code_url(qrcode) }}" width="100"
+                     height="100" /></td>
+                <td>
+                    <a class="btn btn-danger btn-icon-split" href="{{ path('cours_show', {'idCours': cour.idCours}) }}">  <span class="icon text-white-50">
+                            <i class="fas fa-eye"></i>
+                            </span></a>
+                    <a class="btn btn-info btn-icon-split" href="{{ path('cours_edit', {'idCours': cour.idCours}) }}">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-fw fa-wrench"></i>
+                            </span></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+                <a class="btn btn-primary" href="{{ path('cours_new') }}">Create new</a>
+{% endblock %}

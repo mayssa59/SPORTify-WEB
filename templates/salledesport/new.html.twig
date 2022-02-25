@@ -1,0 +1,15 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}New Salle de Sport{% endblock %}
+
+{% block form %}
+    <div style="text-align: center;">
+        <h3>Create new Salle de Sport</h3>
+    </div>
+
+    {{ include('salledesport/_form.html.twig') }}
+    <div style="text-align: center;">
+
+        <a class="btn btn-primary" href="{{ path('salledesport_index') }}">back to list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+
+{% block form %}
+<div class="container-fluid">
+    <h3 class="m-0 font-weight-bold text-primary">Utilisateurs</h3>
+
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-75 m-4 mt-8">
+
+        <div class="card-body">
+            <script>
+                $(".recherche").on("submit", function(event) {
+                    // prevent page reload
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: '{{ path('user_index') }}',
+                        type: 'POST',
+                        success: function() {
+                            // perform dom update to show search results
+                        }
+                    });
+                });
+            </script>
+
+            <div class="card-body">
+                <form  method="get" type="submit" id="user_index"
+                       class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input name="users" id="users" class="form-control bg-light border-0 small" placeholder="Chercher..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <a class="btn btn-primary"  type="submit" >
+                                <i class="fas fa-search fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <br>
+                <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Surnom</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Numerodetelephone</th>
+                <th>Email</th>
+                <th>Datedenaissance</th>
+                <th>Sexe</th>
+                <th>Role</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateur %}
+            <tr>
+                <td>{{ utilisateur.surnom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.numerodetelephone }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.datedenaissance ? utilisateur.datedenaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ utilisateur.sexe }}</td>
+                <td>{{ utilisateur.role }}</td>
+                <td class="pic" ><img style="height: 200px; width: 200px;" src="/imagez/{{ utilisateur.image }}" alt></td>
+                <td>
+                    <a class="btn btn-danger btn-icon-split" href="{{ path('user_show', {'id': utilisateur.id}) }}">  <span class="icon text-white-50">
+                            <i class="fas fa-eye"></i>
+                            </span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">Aucun utilisateur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

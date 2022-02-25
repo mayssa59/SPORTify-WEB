@@ -1,0 +1,17 @@
+{% extends 'templateProp.html.twig' %}
+{% block form %}
+
+    <!DOCTYPE html>
+
+    <title>New CategorieProduit</title>
+
+    {% block body %}
+        <div style="text-align: center;">
+            <h1 class="m-0 font-weight-bold text-primary">Create new CategorieProduit</h1>
+        </div>
+
+        {{ include('Prop/_formCategorieProduits.html.twig') }}
+        <div style="text-align: center;">
+        </div>
+    {% endblock %}
+{% endblock %}

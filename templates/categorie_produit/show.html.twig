@@ -1,0 +1,41 @@
+{% extends 'template.html.twig' %}
+{% block form %}
+
+<!DOCTYPE html>
+
+<title>CategorieProduit</title>
+
+{% block body %}
+    <div style="text-align: center;">
+        <h3 class="m-0 font-weight-bold text-primary">CategorieProduit</h3>
+    </div>
+
+<div class="card shadow-lg h-75 m-4 mt-8">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                <tbody>
+
+
+            <tr>
+                <th>Idcategorie</th>
+                <td>{{ categorie_produit.idcategorie }}</td>
+            </tr>
+            <tr>
+                <th>Typecategorie</th>
+                <td>{{ categorie_produit.typecategorie }}</td>
+            </tr>
+        </tbody>
+    </table>
+            <div style="text-align: center;">
+                <div style="text-align: center;">
+    <a   class="btn btn-secondary" href="{{ path('categorie_produit_index') }}">back to list</a>
+
+    <a class="btn btn-primary" href="{{ path('categorie_produit_edit', {'idcategorie': categorie_produit.idcategorie}) }}">edit</a>
+                </div>
+            </div>
+    {{ include('categorie_produit/_delete_form.html.twig') }}
+{% endblock %}
+{% endblock %}

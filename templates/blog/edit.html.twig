@@ -1,0 +1,16 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Edit Blog{% endblock %}
+
+{% block form %}
+<div style="text-align: center;">
+    <h3 class="m-0 font-weight-bold text-primary">Modifier le blog</h3>
+
+    {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn btn-secondary" href="{{ path('blog_index') }}">Liste des blogs</a>
+
+    {{ include('blog/_delete_form.html.twig') }}
+</div>
+
+{% endblock %}

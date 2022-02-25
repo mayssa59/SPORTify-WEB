@@ -1,0 +1,42 @@
+
+
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+
+
+<div class="form-inline">
+    <div class="form-group col-md-6">
+        {{ form_widget(form.titre,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'titre'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.titre) }}
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.image,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'image'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.image) }}
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.text,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'text'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.text) }}
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        {{ form_widget(form.auteur,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'auteur'}}) }}
+        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">
+            {{ form_errors(form.auteur) }}
+        </div>
+    </div>
+</div>
+<div style="text-align: center;">
+    <br>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+<br>
+{{ form_end(form) }}
+
+

@@ -1,0 +1,19 @@
+{% extends 'template.html.twig' %}
+{% block form %}
+
+<!DOCTYPE html>
+
+<title>Edit CategorieProduit</title>
+
+{% block body %}
+    <div style="text-align: center;">
+    <h3 class="m-0 font-weight-bold text-primary" >Edit CategorieProduit</h3>
+
+    {{ include('categorie_produit/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn btn-secondary" href="{{ path('categorie_produit_index') }}">back to list</a>
+
+    {{ include('categorie_produit/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
+{% endblock %}

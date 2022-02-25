@@ -1,0 +1,103 @@
+{% extends 'utilisateur/layout.html.twig' %}
+{% block style %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+{% endblock %}
+
+{% block formlulaire1 %}
+{{form(form1)}}
+{% endblock %}
+
+
+{% block section1 %}
+
+{% if reclam == null %}
+	<p><h3 class="p-3 mb-2 bg-danger text-dark text-center"> aucune réclamation trouvée</h3></p>
+
+{% else %}
+{% block nombre%}
+
+  <h5><strong>Nombre des réclamations : {{reclam|length}}</strong></h5>
+
+  {% endblock %}
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Date de réclamation</th>
+      <th scope="col">Message</th>
+      <th scope="col">Concernant</th>
+      <th scope="col">Nom de l'adhérant</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+
+
+
+    {% for rec in reclam %}
+
+    <tr>
+      
+      <td>{{rec.datereclam |date('Y-m-d')}}</td>
+      <td>{{rec.message}}</td>
+      <td>{{rec.Naturereclam.objet}}</td>
+      <td>{{rec.Utilisateur.nom}} {{rec.Utilisateur.prenom}}</td>
+      
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}
+
+
+{% block section2 %}
+
+{% if paiement == null %}
+	<p><h3 class="p-3 mb-2 bg-danger text-dark text-center"> aucun paiement effectué</h3></p>
+
+{% else %}
+{% block nombre2 %}
+
+  <h5><strong>Nombre de paiement effectué : {{paiement|length}}</strong></h5>
+
+  {% endblock %}
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Nom et prénom Adhérant</th>
+      <th scope="col">Date de paiement</th>
+      <th scope="col">Montant payer</th>
+      <th scope="col">Durée d'abonnement</th>
+      <th scope="col">Mode de paiement</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  		{% for pay in paiement %}
+
+    <tr>
+       <td>{{pay.Utilisateur.nom}} {{pay.Utilisateur.prenom}}</td>
+      <td>{{pay.Datepaiement |date('d-m-Y')}}</td>
+     
+      <td>{{pay.prix}} dinars</td>
+      <td>{{pay.duree}} mois</td>
+      <td>{{pay.ModePaiement.libelle}}</td>
+     
+      
+
+    </tr>
+    
+    {% endfor %}
+
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'template.html.twig' %}
+
+{% block form %}
+
+    <div style="text-align: center;">
+        <h3 class="m-0 font-weight-bold text-primary">Abonnements</h3>
+    </div>
+
+<div class="card shadow-lg h-75 m-4 mt-8">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <tbody>
+                <tr>
+                    <th>IdAbonnement</th>
+                    <td>{{ abonnement.idAbonnement }}</td>
+                </tr>
+                <tr>
+                    <th>TypeAbonnement</th>
+                    <td>{{ abonnement.typeAbonnement }}</td>
+                </tr>
+                <tr>
+                    <th>PrixAbonnement</th>
+                    <td>{{ abonnement.prixAbonnement }}</td>
+                </tr>
+                <tr>
+                    <th>surnomUser</th>
+                    <td>{{ abonnement.surnomUser }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ abonnement.datecreation ? abonnement.datecreation|date('Y-m-d') : '' }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+    <div style="text-align: center;">
+         <a class="btn btn-secondary" href="{{ path('abonnement_index') }}">back to list</a>
+
+         <a class="btn btn-primary" href="{{ path('abonnement_edit', {'idAbonnement': abonnement.idAbonnement}) }}">edit</a>
+
+        {{ include('abonnement/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}

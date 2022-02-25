@@ -1,0 +1,30 @@
+{% extends 'template.html.twig' %}
+{#{% block form %}
+
+<!DOCTYPE html>
+
+<title>New Produits</title>
+
+{% block body %}
+    <h1>Create new Produits</h1>
+
+    {{ include('produits/_formCours.html.twig') }}
+
+    <a class="btn btn-secondary" href="{{ path('produits_index') }}">back to list</a>
+{% endblock %}
+{% endblock %} #}
+
+
+{% block title %}New Produits{% endblock %}
+
+{% block form %}
+    <div style="text-align: center;">
+        <h3 class="m-0 font-weight-bold text-primary">Create new Produits</h3>
+    </div>
+
+    {{ include('produits/_form.html.twig') }}
+    <div style="text-align: center;">
+
+        <a class="btn btn-secondary" href="{{ path('produits_index') }}">back to list</a>
+    </div>
+{% endblock %}

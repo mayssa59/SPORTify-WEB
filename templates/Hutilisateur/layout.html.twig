@@ -1,0 +1,337 @@
+
+
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+       
+        <meta charset="utf-8">
+        <title>{% block title %}Bienvenue à votre profil{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="favicon.ico">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"> 
+
+        <!--Google Font link-->
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+
+
+
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/swiper.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/iconfont.css') }}">
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/bootsnav.css') }}">
+
+        {% block style %}{% endblock %}
+
+
+
+        <!--For Plugins external css-->
+        <!--<link rel="stylesheet" href="assets/css/plugins.css" />-->
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/style.css') }}">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="{{ asset('houssem/public/assets/css/responsive.css') }}" />
+
+        <script src="{{ asset('houssem/public/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar-collapse">
+
+        
+
+        <!-- Preloader -->
+        <div id="loading">
+            <div id="loading-center">
+                <div id="loading-center-absolute">
+                    <div class="object" id="object_one"></div>
+                    <div class="object" id="object_two"></div>
+                    <div class="object" id="object_three"></div>
+                    <div class="object" id="object_four"></div>
+                </div>
+            </div>
+        </div><!--End off Preloader -->
+
+
+        <div class="culmn">
+            <!--Home page style-->
+
+
+            <nav class="navbar navbar-default bootsnav navbar-fixed white no-background">
+                <div class="container">  
+
+                    <!-- Start Atribute Navigation -->
+                    <div class="attr-nav">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                           
+                        </ul>
+                    </div>        
+                    <!-- End Atribute Navigation -->
+
+
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="#brand">
+                            <img src="{{ asset('houssem/public/assets/images/logo.png')}}" class="logo logo-display" alt="">
+                            <img src="{{ asset('houssem/public/assets/images/footer-logo.png')}}" class="logo logo-scrolled" alt="">
+                        </a>
+
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <!-- navbar menu -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-center">
+                            <li><a href="#home">Acceuil</a></li>                    
+                            <li><a href="#features">Mes reclamations</a></li>
+                            <li><a href="#reviews">Mes paiements</a></li>
+                        
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>   
+            </nav>
+
+            <!--Home Sections-->
+
+            <section id="home" class="home">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home">
+                            <div class="col-md-6">
+                                <div class="home_text">
+                                    <h1 class="text-white">prenez plaisir à faire du sport</h1>
+                                </div>
+
+                                
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="phone_one phone_attr1 text-center sm-m-top-50">
+                                    <div class="attr_rio text-uppercase">Cardio</div>
+                                    <div class="attr_sun text-uppercase text-white">Yoga</div>
+                                    <div class="attr_lon text-uppercase text-white">Muscul</div>
+                                    <img src="{{ asset('houssem/public/assets/images/phone01.png')}}" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="scrooldown">
+                            <a href="#features"><i class="fa fa-chevron-down"></i></a>
+                        </div>
+
+                    </div><!--End off row-->
+                </div><!--End off container -->
+            </section> <!--End off Home Sections-->
+
+
+
+            <!--Featured Section-->
+            <section id="features" class="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_features p-top-100">
+                             <div class="col-md-12 col-md-offset-2 col-sm-12">
+                                <div class="head_title text-center">
+                                    <h2>Mes réclamations </h2>
+                                    <a href="" data-toggle="modal" data-target="#exampleModal">envoyer réclamation</a>
+                                    <!-- Modal -->
+
+<!-- The Modal -->
+<div class="modal" id="exampleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">envoyer une réclamation</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+       {% block formlulaire1 %}
+        {% endblock %}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+ 
+                                    
+                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                {% block section1 %}
+                                <h6>{% block nombre %}{% endblock %} </h6>
+
+                                {% endblock %}
+                              
+                            </div>
+                            
+                           
+                        </div>
+                    </div><!-- End off row -->
+                </div><!-- End off container -->
+            </section><!-- End off Featured Section-->
+
+
+
+            
+
+
+            <!--screen short section-->
+
+           
+
+
+            <!--People Section-->
+            <section id="reviews" class="reviews m-top-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_reviews">
+                            <div class="col-md-8 col-md-offset-2 col-sm-12">
+                                <div class="head_title text-center">
+                                    <h2>Mes paiements</h2>
+    
+                                 
+                                </div>
+
+                            </div>
+
+                                <div class="col-md-12">
+                                {% block section2 %}
+                                 <h4 class="head_title">{% block nombre2 %}{% endblock %} </h4>
+
+                                {% endblock %}
+                              
+                            </div>
+                            
+                            
+
+
+                            </div>
+                        </div><!-- End off Main People -->
+                    </div><!-- End off row -->
+                
+            </section><!-- End off People Section-->
+
+
+            <!--App Download Section-->
+            
+            <!-- scroll up-->
+            <div class="scrollup">
+                <a href="#"><i class="fa fa-chevron-up"></i></a>
+            </div><!-- End off scroll up -->
+            
+            
+            <footer id="footer" class="footer bg-black">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="navbar navbar-default bootsnav footer-menu no-background">
+                                <div class="container">  
+
+                                    <!-- Start Atribute Navigation -->
+                                    <div class="attr-nav">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            
+                                        </ul>
+                                    </div>        
+                                    <!-- End Atribute Navigation -->
+
+
+                                    <!-- Start Header Navigation -->
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                                            <i class="fa fa-bars"></i>
+                                        </button>
+                                        <a class="navbar-brand" href="#brand"><img src="{{ asset('houssem/public/assets/images/footer-logo.png')}}" class="logo" alt=""></a>
+                                    </div>
+                                    <!-- End Header Navigation -->
+
+                                    <!-- navbar menu -->
+                                    <div class="collapse navbar-collapse" id="navbar-footer">
+                                        <ul class="nav navbar-nav navbar-center">
+                                            <li><a href="#home">Acceuil</a></li>                    
+                                            <li><a href="#features">Mes réclamations</a></li>
+                                            <li><a href="#reviews">Mes paiements</a></li>
+                                           
+                                        </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                </div>   
+                            </nav>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="col-md-12">
+                            <div class="main_footer text-center p-top-40 p-bottom-30">
+                                <p class="wow fadeInRight" data-wow-duration="1s">
+                                    Made with 
+                                    <i class="fa fa-heart"></i>
+                                    by 
+<a target="_blank" href="#">SPORTify</a> 
+                                    2021. Tous droit réservés
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+
+
+
+        </div>
+
+
+
+<!-- Button trigger modal -->
+
+
+
+
+        <!-- JS includes -->
+
+         <script
+  src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        
+        <script src="{{ asset('houssem/public/assets/js/vendor/jquery-1.11.2.min.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/jquery.magnific-popup.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/jquery.easing.1.3.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/swiper.min.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/jquery.collapse.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/bootsnav.js') }}"></script>
+
+
+
+        <script src="{{ asset('houssem/public/assets/js/plugins.js') }}"></script>
+        <script src="{{ asset('houssem/public/assets/js/main.js') }}"></script>
+
+    </body>
+</html>

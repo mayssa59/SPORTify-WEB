@@ -1,0 +1,73 @@
+{% extends 'template.html.twig' %}
+
+
+{% block form %}
+
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-75 m-4 mt-8">
+        <div class="card-body"><h3>Salles De Sport</h3>
+            {# {{ form_start(form) }}
+            <div class="form-row align-items-end" >
+                <div class="col">
+                    {{ form_row(form.nomSalle) }}
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }} #}
+            <br>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>IdSalle</th>
+                        <th>NomSalle</th>
+                        <th>Adresse</th>
+                        <th>Region</th>
+                        <th>Heure Debut</th>
+                        <th>Heure Fin</th>
+                        <th>Min</th>
+                        <th>N°Tel</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for Salle in salledesport %}
+                        <tr>
+                            <td>{{ Salle.idSalle }}</td>
+                            <td>{{ Salle.nomSalle }}</td>
+                            <td>{{ Salle.adresse}}</td>
+                            <td>{{ Salle.region }}</td>
+                            <td>{{ Salle.hdebut }}</td>
+                            <td>{{ Salle.hfin }}</td>
+                            <td>{{ Salle.min }}</td>
+                            <td>{{ Salle.numtel }}</td>
+                            <td>
+                                <a class="btn btn-danger btn-icon-split" href="{{ path('Salle_show', {'idSalle': Salle.idSalle}) }}">  <span class="icon text-white-50">
+                            <i class="fas fa-eye"></i>
+                            </span></a>
+                                <a class="btn btn-info btn-icon-split" href="{{ path('Salle_edit', {'idSalle': Salle.idSalle}) }}">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-fw fa-wrench"></i>
+                            </span></a>
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="10">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+                <a class="btn btn-primary" href="{{ path('Salle_new') }}">Create new</a>
+        </div>
+    </div>
+</div>
+                {% endblock %}

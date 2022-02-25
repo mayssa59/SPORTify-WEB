@@ -1,0 +1,17 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Edit Salle de Sport{% endblock %}
+
+{% block form %}
+    <div style="text-align: center;">
+        <h3>Edit Salle de sport</h3>
+
+
+        {{ include('salledesport/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a class="btn btn-primary" href="{{ path('salledesport_index') }}">back to list</a>
+
+        {{ include('salledesport/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}

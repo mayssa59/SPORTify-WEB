@@ -1,0 +1,52 @@
+{% extends 'template.html.twig' %}
+
+
+{% block form %}
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="card shadow-lg h-75 m-4 mt-8">
+
+        <div class="card-body"><h3>Zones</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+                    <tr>
+                        <th>Region</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for zone in zone %}
+                        <tr>
+                            <td>{{ zone.region }}</td>
+                            <td>{{ zone.lng }}</td>
+                            <td>{{ zone.lat }}</td>
+                            <td>
+                                <a class="btn btn-danger btn-icon-split" href="{{ path('zone_show', {'region': zone.region}) }}"> <span class="icon text-white-50">
+                            <i class="fas fa-eye"></i>
+                            </span></a>
+                                <a class="btn btn-info btn-icon-split" href="{{ path('zone_edit', {'region': zone.region}) }}"><span class="icon text-white-50">
+                            <i class="fas fa-fw fa-wrench"></i>
+                            </span></a>
+                            </td>
+                        </tr>
+                    {% else %}
+
+                        <tr>
+                            <td colspan="10">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+                <a class="btn btn-primary" href="{{ path('zone_new') }}">Create new</a>
+        </div>
+    </div>
+    </div>
+            {% endblock %}

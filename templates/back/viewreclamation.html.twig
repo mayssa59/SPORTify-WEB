@@ -1,0 +1,49 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Affichage de tous les réclamations{% endblock %}
+
+
+{% block telecharger %}
+<div class="col-md-3"><a href="{{path('generatePDF')}}" class="btn btn-primary">Telecharger PDF</a> </div>
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<marquee><h4><strong>Affichage de tous les réclamations</strong></h4></marquee>
+
+<table class="display table table-striped" id="example">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Date de réclamation</th>
+      <th scope="col">Message</th>
+      <th scope="col">Concernant</th>
+      <th scope="col">Nom de l'adhérant</th>
+      <th scope="col">Modification</th>
+      <th scope="col">Suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  		{% for rec in reclam %}
+
+    <tr>
+      
+      <td>{{rec.datereclam |date('Y-m-d')}}</td>
+      <td>{{rec.message}}</td>
+      <td>{{rec.Naturereclam.objet}}</td>
+      <td>{{rec.Utilisateur.nom}} {{rec.Utilisateur.prenom}}</td>
+      <td><a href="{{path('edit_reclamation',{'id': rec.id})}}" class="btn btn-success">modifier</a>  </td>
+      <td><a href="{{path('delete_reclamation',{'id': rec.id})}}" class="btn btn-danger">supprimer</a> </td>
+
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

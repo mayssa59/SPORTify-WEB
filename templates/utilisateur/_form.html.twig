@@ -1,0 +1,58 @@
+{{ form_start(form) }}
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{ form_widget(form.prenom,{'attr': {'class': 'form-control form-control-user','placeholder': 'Prenom'}}) }}
+
+        </div>
+        <div class="col-sm-6">
+            {{ form_widget(form.nom,{'attr': {'class': 'form-control form-control-user','placeholder': 'Nom'}}) }}
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{ form_widget(form.surnom,{'attr': {'class': 'form-control form-control-user','placeholder': 'Surnom'}}) }}
+
+        </div>
+        <div class="col-sm-6">
+            {{ form_widget(form.numerodetelephone,{'attr': {'class': 'form-control form-control-user','placeholder': 'Numero de telephone'}}) }}
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{ form_widget(form.email,{'attr': {'class': 'form-control form-control-user','placeholder': 'Email'}}) }}
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{ form_widget(form.password,{'attr': {'class': 'form-control form-control-user','placeholder': 'Mot de passe'}}) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{ form_widget(form.datedenaissance) }}
+
+        </div>
+        <div class="col-sm-6">
+            {{ form_widget(form.sexe,{'attr': {'class': 'form-control form-control-user','placeholder': 'Genre'}}) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{ form_widget(form.role,{'attr': {'class': 'form-control form-control-user','placeholder': 'Rôle'}}) }}
+
+        </div>
+        <div class="col-sm-6">
+            {{ form_widget(form.image) }}
+
+        </div>
+    </div>
+<button class="btn">{{ button_label|default('Save') }}</button>
+
+<hr>
+<div class="text-center">
+    <a class="small" href="{{ path('app_login') }}">Déja inscrit? Se connecter!</a>
+</div>
+{{ form_end(form) }}

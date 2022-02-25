@@ -1,0 +1,71 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block form %}
+<div style="text-align: center;">
+    <h3 class="m-0 font-weight-bold text-primary">Utilisateurs</h3>
+</div>
+<div class="card shadow-lg h-75 m-4 mt-8">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Surnom</th>
+                <td>{{ utilisateur.surnom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Numerodetelephone</th>
+                <td>{{ utilisateur.numerodetelephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ utilisateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ utilisateur.password }}</td>
+            </tr>
+            <tr>
+                <th>Datedenaissance</th>
+                <td>{{ utilisateur.datedenaissance ? utilisateur.datedenaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ utilisateur.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{ utilisateur.role }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ utilisateur.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {{ include('utilisateur/_delete_form.html.twig') }}
+    <br>
+
+    <div style="text-align: center;">
+        <a class="btn btn-secondary" href="{{ path('user_index') }}">Liste des users</a>
+    </div>
+
+
+
+{% endblock %}

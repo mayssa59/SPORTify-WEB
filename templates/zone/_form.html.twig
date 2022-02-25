@@ -1,0 +1,34 @@
+
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+
+<div class="form-inline">
+    <div class="form-group col-md-6">
+
+        {{ form_widget(form.region,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.region)}}
+    </div>
+    <div class="form-group col-md-6">
+
+        {{ form_widget(form.lng,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.lng)}}
+    </div>
+    <div class="form-group col-md-6">
+
+        {{ form_widget(form.lat,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.lat)}}
+    </div>
+
+
+
+</div>
+
+<div style="text-align: center;">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+<br>
+
+
+{{ form_end(form) }}
+
+
+

@@ -1,0 +1,54 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Affichage de tous paiements effectués{% endblock %}
+{% block telecharger %}
+<div class="col-md-3"><a href="{{path('generatePDF2')}}" class="btn btn-warning">Telecharger PDF</a> </div>
+
+{% endblock %}
+
+{% block body %}
+
+
+<marquee><h4><strong>Affichage de tous les paiements effectués</strong></h4></marquee>
+
+
+
+<table class="display table table-striped" id="example">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Nom et prénom Adhérant</th>
+      <th scope="col">Date de paiement</th>
+      <th scope="col">Montant payer</th>
+      <th scope="col">Durée d'abonnement</th>
+      <th scope="col">Mode de paiement</th>
+      <th scope="col">Modification</th>
+      <th scope="col">Suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  		{% for pay in paiement %}
+
+    <tr>
+       <td>{{pay.Utilisateur.nom}} {{pay.Utilisateur.prenom}}</td>
+      <td>{{pay.Datepaiement |date('d-m-Y')}}</td>
+     
+      <td>{{pay.prix}} dinars</td>
+      <td>{{pay.duree}} mois</td>
+      <td>{{pay.ModePaiement.libelle}}</td>
+     
+      <td><a href="{{path('edit_paiement',{'id': pay.id})}}" class="btn btn-success">modifier</a>  </td>
+      <td><a href="{{path('delete_paiement',{'id': pay.id})}}" class="btn btn-danger">supprimer</a> </td>
+
+    </tr>
+    
+    {% endfor %}
+  </tbody>
+
+ 
+</table>
+
+
+
+{% endblock %}

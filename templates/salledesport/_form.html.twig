@@ -1,0 +1,56 @@
+{% block head_css %}
+    <!-- Copy CSS from https://getbootstrap.com/docs/4.4/getting-started/introduction/#css -->
+{% endblock %}
+{% block head_js %}
+    <!-- Copy JavaScript from https://getbootstrap.com/docs/4.4/getting-started/introduction/#js -->
+{% endblock %}
+
+
+    {{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+<div class="form-inline">
+    <div class="form-group col-md-6">
+        {{ form_widget(form.idSalle,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}})}}
+        {{form_errors(form.idSalle)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.nomSalle,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.nomSalle)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.adresse,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.adresse)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.region,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.region)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.hdebut,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.hdebut)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.hfin,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.hfin)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.min,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.min)}}
+    </div>
+    <div class="form-group col-md-6">
+        {{ form_widget(form.numtel,{'attr': {'class': 'form-control w-100 mt-2 mb-2'}}) }}
+        {{form_errors(form.numtel)}}
+    </div>
+
+
+
+</div>
+<div style="text-align: center;">
+    <br>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+<br>
+
+{{ form_end(form) }}
+
+

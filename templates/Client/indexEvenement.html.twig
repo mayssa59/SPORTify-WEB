@@ -1,0 +1,87 @@
+{% extends 'templateClient.html.twig' %}
+
+{% block form %}
+
+    <div class="container-fluid">
+        <h3 class="m-0 font-weight-bold text-primary">Evennements</h3>
+        <!-- Page Heading -->
+        <div class="card shadow-lg h-75 m-4 mt-8">
+            <div class="card-body">
+
+                 <div class="card-body">
+                <form method="get" type="submit" id="recherche"
+                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input name="users"  class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <a class="btn btn-primary" >
+                                <i class="fas fa-search fa-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <br>
+
+
+
+                    <br>
+                    {% block excel %}
+                    <div class="col-md-3"><a href="{{path('export')}}" class="btn btn-primary">Excel File</a> </div>
+                    {% endblock %}
+
+                    <br>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>IdEvennement</th>
+                            <th>NomEvennement</th>
+                            <th>Nbplaces</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Nom_Salle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for evennement in evennements %}
+                            <tr>
+                                <td>{{ evennement.idEvennement }}</td>
+                                <td>{{ evennement.nomEvennement }}</td>
+                                <td>{{ evennement.nbplaces }}</td>
+                                <td>{{ evennement.description }}</td>
+                                <td>{{ evennement.date ? evennement.date|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ evennement.nomSalle }}</td>
+
+
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% set notif = app.session.get('notif') %}
+    {% if notif == "fait" %}
+        <script src="{{ asset("//cdn.jsdelivr.net/npm/sweetalert2@10") }}"></script>
+        <script>
+            Swal.fire(
+                'Evenement ajouter!',
+                'Clicker pour sortir !',
+                'success'
+            )
+        </script>
+        {{ app.session.set('notif', '') }}
+    {% endif %}
+
+{% endblock %}

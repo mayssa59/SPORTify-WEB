@@ -1,0 +1,49 @@
+{% extends 'template.html.twig' %}
+
+
+{% block form %}
+    <div style="text-align: center;">
+        <h3 class="m-0 font-weight-bold text-primary">Categories</h3>
+    </div>
+
+<div class="card shadow-lg h-75 m-4 mt-8">
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+                <th>Type</th>
+                <td>{{ category.type }}</td>
+                <th>Description</th>
+                <td>{{ category.description }}</td>
+                <td> {% if category.type=='Yoga' %}
+                        <img src="{{ asset("yogaa.jpg") }}">
+                    {% elseif category.type=='Cardio' %}
+                        <img src="{{ asset("cardio.png") }}">
+                    {% elseif category.type=='Running' %}
+                        <img src="{{ asset("running.png") }}">
+                    {% elseif category.type=='Zumba' %}
+                        <img src="{{ asset("zumba.jpg") }}">
+                    {% else%}
+                        <img src="{{ asset("sport.png") }}">
+
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+    <div style="text-align: center;">
+        <a  class="btn btn-secondary" href="{{ path('categories_index') }}">back to list</a>
+
+        <a class="btn btn-primary" href="{{ path('categories_edit', {'type': category.type}) }}">edit</a>
+    </div>
+    </div>
+
+
+    {{ include('categories/_delete_form.html.twig') }}
+{% endblock %}
